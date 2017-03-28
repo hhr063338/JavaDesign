@@ -1,4 +1,4 @@
-package design.introduce;
+package design.pattern.introduce;
 
 public class Introduce {
 
