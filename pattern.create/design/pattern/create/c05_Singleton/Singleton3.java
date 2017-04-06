@@ -1,19 +1,25 @@
 package design.pattern.create.c05_Singleton;
 
-public class Singleton {
+public class Singleton3 {
 
     /* 持有私有静态实例，防止被引用，此处赋值为null，目的是实现延迟加载 */  
-    private static Singleton instance = null;  
+    private static Singleton3 instance = null;  
   
     /* 私有构造方法，防止被实例化 */  
-    private Singleton() {  
+    private Singleton3() {  
     }  
   
     /* 静态工程方法，创建实例 */  
-    public static Singleton getInstance() {  
+    public static Singleton3 getInstance() {  
         if (instance == null) {  
-            instance = new Singleton();  
-            System.out.println("生成Singleton一次");
+//        	long times=System.currentTimeMillis();
+//        	System.out.println("执行人times="+times);
+        	synchronized (instance) {
+        		if (instance == null) {
+                    instance = new Singleton3();  
+                    System.out.println("生成Singleton一次");
+        		}
+			}
         }  
         return instance;  
     }  
